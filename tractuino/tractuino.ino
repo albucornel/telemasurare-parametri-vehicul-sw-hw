@@ -63,7 +63,7 @@ void sensorsRead(void) {
 void sendSms(String message){  
   gprsSerial.println("AT+CMGF=1"); // Configuring TEXT mode
   toSerial();
-  gprsSerial.println("AT+CMGS=\"+40787665297\"");//change ZZ with country code and xxxxxxxxxxx with phone number to sms
+  gprsSerial.println("AT+CMGS=\"+40787665297\"");
   toSerial();
   gprsSerial.print(message); //text content
   toSerial();
@@ -135,7 +135,6 @@ void dataToServer(double watertempCalc, double waterLevelCalc,double oilpressCal
       String presiune_ulei; //=String(oilpressCalc);
       String niv_combustibil; //=String(nivelcombCalc);
       String device_id="t1690";
-      //http://telemasurare1.000webhostapp.com/api.php?temp_apa=1.30&nivel_apa=2.10&presiune_ulei=1.10&niv_combustibil=1.10&device_id=t1690
 
    gprsSerial.println("AT+HTTPPARA=URL,http://telemasurare1.000webhostapp.com/api.php?temp_apa=" + String(watertempCalc) + "&nivel_apa=" + String(waterLevelCalc) + "&presiune_ulei=" + String(oilpressCalc) + "&niv_combustibil=" + String(nivelcombCalc) + "&device_id=" + device_id);
    delay(6000);
